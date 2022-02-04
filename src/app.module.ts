@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { LeagueModule } from './league/league.module';
+import { QuoteModule } from './quote/quote.module';
 import { TFTModule } from './tft/tft.module';
 
 @Module({
@@ -7,7 +9,9 @@ import { TFTModule } from './tft/tft.module';
     /**
      * Internals Modules
      */
+    LeagueModule,
     TFTModule,
+    QuoteModule,
 
     /**
      * Nestjs Modules
