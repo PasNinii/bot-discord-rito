@@ -33,6 +33,8 @@ export class TFTGateway {
     @Context() [context]: [Message],
   ): Promise<void> {
     try {
+      content = encodeURI(content);
+
       const summoner = await this.summoners.getUserIdByUserName(content);
       const userRank = (
         await this.tft.getUserRankByUserId(summoner.id)
@@ -45,7 +47,9 @@ export class TFTGateway {
       } else {
         await context.reply(`Ce gros noob n'a pas le level`);
       }
-    } catch {
+    } catch(e) {
+      console.log(e);
+
       await context.reply(
         `Wesh retourne à l'école apprendre ton brechaile si tu sais pas écrire`,
       );
